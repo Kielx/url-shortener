@@ -1,5 +1,6 @@
-import Navbar from "./components/Navbar";
+import NewNav from "./components/NewNav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LogoIllustration from "./images/illustration-working.svg";
 
 function App() {
   return (
@@ -7,9 +8,10 @@ function App() {
       <Switch>
         <Route exact path="/">
           <>
-            <Navbar></Navbar>
-            <h1>Hello from index</h1>
-            <header className="bg-gray-50 w-full h-36"></header>
+            <NewNav />
+            <div className="bg-gray-50 w-full h-full  ">
+              <img src={LogoIllustration} className="w-full pl-20" alt="Logo" />
+            </div>
           </>
         </Route>
         <Route path="*">
