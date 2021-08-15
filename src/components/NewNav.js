@@ -79,7 +79,7 @@ export default function Example() {
             </a>
             <a
               href="#"
-              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-cyan hover:bg-teal-500"
+              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-cyan hover:bg-teal-500"
             >
               Sign up
             </a>

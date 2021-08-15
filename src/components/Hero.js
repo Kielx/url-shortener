@@ -2,7 +2,7 @@ import LogoIllustration from "../images/illustration-working.svg";
 
 const Hero = () => {
   return (
-    <div className=" bg-white w-full flex flex-wrap md:flex-nowrap py-16 overflow-hidden">
+    <div className=" bg-white w-full flex flex-wrap md:flex-nowrap pt-16 pb-32 overflow-hidden">
       <div className="z-20 px-6 flex flex-col order-1 md:order-0 pt-8 md:w-1/2 md:pl-12 md:py-12 lg:pl-24 xl:pt-32 xl:px-40">
         <h2 className="font-bold text-5xl text-center md:text-left lg:text-7xl ">
           More than just shorter links

@@ -2,6 +2,7 @@ import NewNav from "./components/NewNav";
 import Hero from "./components/Hero";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import Statistics from "./components/Statistics";
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
           <>
             <NewNav />
             <Hero />
+
+            <Statistics />
           </>
         </Route>
         <Route path="*">
