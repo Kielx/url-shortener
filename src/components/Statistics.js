@@ -25,7 +25,7 @@ const cards = [
 
 const Statistics = () => {
   return (
-    <div className="bg-gray-100 pb-20" style={{ zIndex: "0" }}>
+    <div className="bg-gray-100 pb-28 lg:pb-60" style={{ zIndex: "0" }}>
       <Shorten />
       <div className="flex flex-col items-center">
         <h3 className="font-bold text-2xl text-center">Advanced Statistics </h3>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Statistics from "./components/Statistics";
 import Boost from "./components/Boost";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Hero />
             <Statistics />
             <Boost />
+            <Footer />
           </>
         </Route>
         <Route path="*">
