@@ -1,5 +1,15 @@
 import React from "react";
 
+/**
+ * PurgeCSS:
+ * top-10
+ * top-20
+ * top-30
+ * top-40
+ * top-0
+ *
+ */
+
 const Card = ({ header, text, icon, index }) => {
   return (
     <div
