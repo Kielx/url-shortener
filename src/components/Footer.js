@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import iconFacebook from "../images/icon-facebook.svg";
 import iconTwitter from "../images/icon-twitter.svg";
 import iconPinterest from "../images/icon-pinterest.svg";
@@ -54,9 +55,9 @@ const Footer = () => {
 
   return (
     <div className="lg:px-28 lg:py-10 lg:flex-row flex flex-col w-full bg-gray-900 justify-between">
-      <a href="#" className=" py-12 font-bold text-4xl text-white text-center">
+      <Link to="#" className=" py-12 font-bold text-4xl text-white text-center">
         Shortly
-      </a>
+      </Link>
       <div className="lg:w-1/2 lg:flex lg:flex-row lg:items-start ">
         {items.map((item) => (
           <div

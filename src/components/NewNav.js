@@ -1,5 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 import { Popover, Transition } from "@headlessui/react";
 import {
   CursorClickIcon,
@@ -34,9 +35,9 @@ export default function Example() {
         <div className="flex justify-between items-center  py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start  ">
             <h1>
-              <a href="#" className="logo font-bold text-2xl">
+              <Link to="#" className="logo font-bold text-2xl">
                 Shortly
-              </a>
+              </Link>
             </h1>
           </div>
           {/* Mobile hamburger menu */}
@@ -49,40 +50,40 @@ export default function Example() {
           {/* Mobile hamburger menu */}
           {/* Dekstop nav items */}
           <Popover.Group as="nav" className="hidden md:flex  space-x-10">
-            <a
-              href="#"
+            <Link
+              to="#"
               className="text-base font-medium text-gray-500 hover:text-gray-900"
             >
               Features
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="text-base font-medium text-gray-500 hover:text-gray-900"
             >
               Pricing
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="text-base font-medium text-gray-500 hover:text-gray-900"
             >
               Resources
-            </a>
+            </Link>
           </Popover.Group>
           {/* Dekstop nav items */}
           {/* Dekstop nav sign buttons */}
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <a
-              href="#"
+            <Link
+              to="#"
               className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
             >
               Sign in
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="#"
               className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-cyan hover:bg-teal-500"
             >
               Sign up
-            </a>
+            </Link>
           </div>
           {/* Dekstop nav sign buttons */}
         </div>
@@ -106,9 +107,9 @@ export default function Example() {
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <h1>
-                  <a href="#" className="logo font-bold text-2xl text-white">
+                  <Link to="#" className="logo font-bold text-2xl text-white">
                     Shortly
-                  </a>
+                  </Link>
                 </h1>
                 <div className="-mr-2">
                   <Popover.Button className=" rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-white hover:bg-cyan focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -120,9 +121,9 @@ export default function Example() {
               <div className="mt-6">
                 <nav className="grid gap-y-8 ">
                   {solutions.map((item) => (
-                    <a
+                    <Link
+                      to={item.href}
                       key={item.name}
-                      href={item.href}
                       className="-m-3 p-3 flex items-center rounded-3xl hover:bg-cyan group"
                     >
                       <item.icon
@@ -132,24 +133,24 @@ export default function Example() {
                       <span className="ml-3 text-base font-medium text-white pointer-events-none group-hover:text-white ">
                         {item.name}
                       </span>
-                    </a>
+                    </Link>
                   ))}
                 </nav>
               </div>
             </div>
             <div className="py-6 px-5 space-y-6">
               <div>
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="w-full rounded-3xl flex items-center justify-center px-4 py-2 border border-transparent  shadow-sm text-base font-medium text-white bg-cyan hover:bg-teal-500"
                 >
                   Sign up
-                </a>
+                </Link>
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{" "}
-                  <a href="#" className="text-cyan hover:text-teal-500">
+                  <Link to="#" className="text-cyan hover:text-teal-500">
                     Sign in
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>
