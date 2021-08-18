@@ -65,7 +65,7 @@ const Shorten = () => {
 
   return (
     <>
-      <section
+      <form
         className="relative -top-20 md:px-10 md:py-10 md:space-x-4 md:space-y-0 md:items-center flex flex-col md:flex-row w-10/12 m-auto p-5 rounded-lg bg-darkViolet bg-cover bg-no-repeat space-y-4"
         style={{
           backgroundImage: `url(${
@@ -89,6 +89,7 @@ const Shorten = () => {
         )}
 
         <button
+          type="submit"
           onClick={(e) => {
             e.preventDefault();
             shortenLink(longLink);
@@ -97,7 +98,7 @@ const Shorten = () => {
         >
           Shorten it!
         </button>
-      </section>
+      </form>
       {linkList.map((link, index) => (
         <ShortenLink
           key={index}
