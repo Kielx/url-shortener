@@ -14,16 +14,64 @@ const Shorten = () => {
   const [longLink, setLongLink] = useState("");
   const [linkList, setLinkList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({
+    invalidURL: { message: `Please enter a valid URL`, status: false },
+    noURL: { message: `No URL specified`, status: false },
+    fetching: { message: `There was an error while shortening`, status: false },
+  });
 
   async function shortenLink(link) {
     setLoading(true);
-    const response = await fetch(
-      `https://api.shrtco.de/v2/shorten?url=${link}`
-    );
-    let data = await response.json();
-    setLoading(false);
-    if (data.ok) {
-      return setLinkList((oldList) => [...oldList, data.result]);
+    Object.keys(errors).map((key) => {
+      return (errors[key].status = false);
+    });
+    try {
+      const response = await fetch(
+        `https://api.shrtco.de/v2/shorten?url=${link}`
+      );
+      let data = await response.json();
+      console.log(data);
+      if (data.ok) {
+        setLoading(false);
+        return setLinkList((oldList) => [...oldList, data.result]);
+      }
+      if (data.error_code === 2) {
+        let errs = errors;
+        errs.invalidURL.status = true;
+        console.log(errors);
+        setErrors(errs);
+        setLoading(false);
+        setTimeout(() => {
+          setErrors({
+            ...errs,
+            invalidURL: { ...errors.invalidURL, status: false },
+          });
+        }, 5000);
+        return;
+      }
+      if (data.error_code === 1) {
+        let errs = errors;
+        errs.noURL.status = true;
+        setLoading(false);
+        setTimeout(() => {
+          setErrors({
+            ...errs,
+            noURL: { ...errors.noURL, status: false },
+          });
+        }, 5000);
+        return;
+      }
+    } catch (e) {
+      let errs = errors;
+      errs.fetching.status = true;
+      setLoading(false);
+      setTimeout(() => {
+        setErrors({
+          ...errs,
+          fetching: { ...errors.fetching, status: false },
+        });
+      }, 5000);
+      return;
     }
   }
 
@@ -53,6 +101,19 @@ const Shorten = () => {
         >
           Shorten it!
         </button>
+        {Object.keys(errors).map((key) => {
+          if (errors[key].status) {
+            return (
+              <div
+                className="transition-all bg-red-500 px-4 py-2 border-t border-transparent rounded-md shadow-sm"
+                key={key}
+              >
+                {errors[key].message}
+              </div>
+            );
+          }
+          return null;
+        })}
       </section>
       {linkList.map((link, index) => (
         <ShortenLink
