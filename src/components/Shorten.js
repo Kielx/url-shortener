@@ -35,7 +35,6 @@ const Shorten = () => {
         `https://api.shrtco.de/v2/shorten?url=${link}`
       );
       let data = await response.json();
-      console.log(data);
       if (data.ok) {
         setLoading(false);
         return setLinkList((oldList) => [...oldList, data.result]);
