@@ -13,7 +13,6 @@ const ShortenLink = ({ longLink, shortLink, fullShortLink }) => {
       <button
         onClick={(e) => {
           e.target.innerHTML = "Copied!";
-          console.log(e.target);
           navigator.clipboard.writeText(fullShortLink);
           e.target.className = "btn-clicked";
           setTimeout(() => {

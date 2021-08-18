@@ -35,8 +35,8 @@ const Statistics = () => {
         </p>
         <div className="lg:flex lg:flex-row relative">
           {cards.map((card, index) => (
-            <>
-              <Card key={card.header} {...card} index={index} />
+            <div key={card.header}>
+              <Card {...card} index={index} />
 
               {index < cards.length - 1 ? (
                 <div className="lg:hidden bg-cyan w-2 h-24 m-auto"></div>
@@ -46,7 +46,7 @@ const Statistics = () => {
                   className="hidden lg:block bg-cyan w-8/12 h-2 m-auto absolute top-32 left-10"
                 ></div>
               )}
-            </>
+            </div>
           ))}
         </div>
       </div>
