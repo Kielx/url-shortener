@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import backgroundMobile from "../images/bg-shorten-mobile.svg";
 import backgroundDesktop from "../images/bg-shorten-desktop.svg";
 import ShortenLink from "./ShortenLink";
@@ -16,6 +16,15 @@ const Shorten = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    sessionStorage.getItem("linkList") &&
+      setLinkList(JSON.parse(sessionStorage.getItem("linkList")));
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("linkList", JSON.stringify(linkList));
+  }, [linkList]);
 
   async function shortenLink(link) {
     setError(false);
