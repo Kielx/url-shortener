@@ -1,29 +1,33 @@
-import NewNav from "./components/NewNav";
-import Hero from "./components/Hero";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LoadingSpinner from "./components/LoadingSpinner";
 
-import Statistics from "./components/Statistics";
-import Boost from "./components/Boost";
-import Footer from "./components/Footer";
+const Statistics = React.lazy(() => import("./components/Statistics"));
+const Boost = React.lazy(() => import("./components/Boost"));
+const Footer = React.lazy(() => import("./components/Footer"));
+const NewNav = React.lazy(() => import("./components/NewNav"));
+const Hero = React.lazy(() => import("./components/Hero"));
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <>
-            <NewNav />
-            <Hero />
-            <Statistics />
-            <Boost />
-            <Footer />
-          </>
-        </Route>
-        <Route path="*">
-          <h1>Oooops... Requested page was not found</h1>
-        </Route>
-      </Switch>
-    </Router>
+    <Suspense fallback={<LoadingSpinner />}>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <>
+              <NewNav />
+              <Hero />
+              <Statistics />
+              <Boost />
+              <Footer />
+            </>
+          </Route>
+          <Route path="*">
+            <h1>Oooops... Requested page was not found</h1>
+          </Route>
+        </Switch>
+      </Router>
+    </Suspense>
   );
 }
 
