@@ -13,7 +13,7 @@ const Hero = () => {
         </p>
         <button
           href="#"
-          className="m-auto md:ml-0 mt-4 font-bold whitespace-nowrap inline-flex items-center justify-center px-8 py-3 border border-transparent rounded-3xl shadow-sm text-lg text-white bg-cyan hover:bg-teal-500"
+          className="m-auto md:ml-0 mt-4 font-bold whitespace-nowrap inline-flex items-center justify-center px-8 py-3 border border-transparent rounded-3xl shadow-sm text-lg text-white bg-cyan hover:bg-lightCyan"
         >
           Get Started
         </button>

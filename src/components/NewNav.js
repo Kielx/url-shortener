@@ -80,7 +80,7 @@ export default function Example() {
             </Link>
             <Link
               to="#"
-              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-cyan hover:bg-teal-500"
+              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-cyan hover:bg-lightCyan"
             >
               Sign up
             </Link>
@@ -142,13 +142,13 @@ export default function Example() {
               <div>
                 <Link
                   to="#"
-                  className="w-full rounded-3xl flex items-center justify-center px-4 py-2 border border-transparent  shadow-sm text-base font-medium text-white bg-cyan hover:bg-teal-500"
+                  className="w-full rounded-3xl flex items-center justify-center px-4 py-2 border border-transparent  shadow-sm text-base font-medium text-white bg-cyan hover:bg-lightCyan"
                 >
                   Sign up
                 </Link>
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{" "}
-                  <Link to="#" className="text-cyan hover:text-teal-500">
+                  <Link to="#" className="text-cyan hover:text-lightCyan">
                     Sign in
                   </Link>
                 </p>

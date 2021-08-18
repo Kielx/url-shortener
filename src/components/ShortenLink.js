@@ -20,7 +20,7 @@ const ShortenLink = ({ longLink, shortLink, fullShortLink }) => {
             e.target.className = "btn-copy";
           }, 2000);
         }}
-        className="pointer-events-auto md:w-2/12 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-cyan hover:bg-teal-500"
+        className="pointer-events-auto md:w-2/12 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-cyan hover:bg-lightCyan"
       >
         Copy
       </button>

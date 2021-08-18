@@ -14,17 +14,13 @@ const Shorten = () => {
   const [longLink, setLongLink] = useState("");
   const [linkList, setLinkList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({
-    invalidURL: { message: `Please enter a valid URL`, status: false },
-    noURL: { message: `No URL specified`, status: false },
-    fetching: { message: `There was an error while shortening`, status: false },
-  });
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function shortenLink(link) {
+    setError(false);
+    setErrorMessage("");
     setLoading(true);
-    Object.keys(errors).map((key) => {
-      return (errors[key].status = false);
-    });
     try {
       const response = await fetch(
         `https://api.shrtco.de/v2/shorten?url=${link}`
@@ -35,41 +31,25 @@ const Shorten = () => {
         setLoading(false);
         return setLinkList((oldList) => [...oldList, data.result]);
       }
-      if (data.error_code === 2) {
-        let errs = errors;
-        errs.invalidURL.status = true;
-        console.log(errors);
-        setErrors(errs);
+      if (!data.ok) {
         setLoading(false);
+        setError(true);
+        setErrorMessage(data.error.match(/^(.+?)[.,]/)[0]);
         setTimeout(() => {
-          setErrors({
-            ...errs,
-            invalidURL: { ...errors.invalidURL, status: false },
-          });
-        }, 5000);
-        return;
-      }
-      if (data.error_code === 1) {
-        let errs = errors;
-        errs.noURL.status = true;
-        setLoading(false);
-        setTimeout(() => {
-          setErrors({
-            ...errs,
-            noURL: { ...errors.noURL, status: false },
-          });
+          setError(false);
+          setErrorMessage("");
         }, 5000);
         return;
       }
     } catch (e) {
-      let errs = errors;
-      errs.fetching.status = true;
+      setError(true);
+      setErrorMessage(
+        "An error occured while shortening your URL, please try again."
+      );
       setLoading(false);
       setTimeout(() => {
-        setErrors({
-          ...errs,
-          fetching: { ...errors.fetching, status: false },
-        });
+        setError(false);
+        setErrorMessage("");
       }, 5000);
       return;
     }
@@ -88,32 +68,27 @@ const Shorten = () => {
       >
         <input
           type="text"
-          className="md:w-10/12 whitespace-nowrap inline-flex items-center justify-center px-4 py-3 border border-transparent rounded-md shadow-sm text-base font-medium placeholder-gray-400 "
+          className={` md:w-10/12 whitespace-nowrap inline-flex items-center justify-center px-4 py-3 border border-transparent rounded-md shadow-sm text-base font-medium placeholder-gray-400 ${
+            error ? "ring-4 ring-red-500 placeholder-red-300 text-red-500" : ""
+          }`}
           placeholder="Shorten a link here..."
           onChange={(e) => setLongLink(e.target.value)}
         ></input>
+        {error && (
+          <div className="md:absolute md:top-24 md:left-2 transition-all italic text-red-500 text-sm px-4 m-auto shadow-sm">
+            {errorMessage}
+          </div>
+        )}
+
         <button
           onClick={(e) => {
             e.preventDefault();
             shortenLink(longLink);
           }}
-          className="md:w-2/12 whitespace-nowrap inline-flex items-center justify-center px-4 py-3 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-cyan hover:bg-teal-500"
+          className="md:w-2/12 whitespace-nowrap inline-flex items-center justify-center px-4 py-3 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-cyan hover:bg-lightCyan"
         >
           Shorten it!
         </button>
-        {Object.keys(errors).map((key) => {
-          if (errors[key].status) {
-            return (
-              <div
-                className="transition-all bg-red-500 px-4 py-2 border-t border-transparent rounded-md shadow-sm"
-                key={key}
-              >
-                {errors[key].message}
-              </div>
-            );
-          }
-          return null;
-        })}
       </section>
       {linkList.map((link, index) => (
         <ShortenLink

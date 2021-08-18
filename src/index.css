@@ -17,11 +17,11 @@
 }
 
 .btn-clicked {
-  @apply transition-all md:w-2/12 pointer-events-none whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-darkViolet hover:bg-teal-500;
+  @apply transition-all md:w-2/12 pointer-events-none whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-darkViolet hover:bg-lightCyan;
 }
 
 .btn-copy {
-  @apply transition-all pointer-events-auto md:w-2/12 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-cyan hover:bg-teal-500;
+  @apply transition-all pointer-events-auto md:w-2/12 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-cyan hover:bg-lightCyan;
 }
 
 /* Loading Spinner */

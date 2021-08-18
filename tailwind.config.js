@@ -28,6 +28,7 @@ module.exports = {
         teal: colors.teal,
         darkViolet: "hsl(257, 27%, 26%)",
         cyan: "hsl(180, 66%, 49%)",
+        lightCyan: "#80e5e5",
       },
     },
   },
