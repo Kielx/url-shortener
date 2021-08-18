@@ -10,7 +10,13 @@ const Hero = React.lazy(() => import("./components/Hero"));
 
 function App() {
   return (
-    <Suspense fallback={<LoadingSpinner />}>
+    <Suspense
+      fallback={
+        <div className="w-full h-full flex m-auto">
+          <LoadingSpinner />
+        </div>
+      }
+    >
       <Router>
         <Switch>
           <Route exact path="/">
